@@ -1,3 +1,4 @@
+import uvicorn
 import sentry_sdk
 from fastapi import FastAPI
 from fastapi.routing import APIRoute
@@ -31,3 +32,7 @@ if settings.all_cors_origins:
     )
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
+
+# This is strictly to allow for debugging the backend
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
