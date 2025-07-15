@@ -4,6 +4,7 @@ from paddleocr import PaddleOCR
 res = {}
 
 # TODO: Make properties configurable
+# TODO: This takes a while to load, causing startup of the backend to take a full minute
 ocr_engine = PaddleOCR(
     use_doc_orientation_classify=False,
     use_doc_unwarping=False,

@@ -16,7 +16,7 @@ Background service that captures FIFA match statistics automatically through hot
 3. The agent will capture and process the statistics automatically
 4. View your match history at `http://localhost:8000`
 
-## Debugging
+## Prerequisites
 
 .venv\Scripts\activate
 python main.py

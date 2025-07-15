@@ -1,4 +1,4 @@
-# FastAPI Project - Backend
+# FIFA Match Analytics - Backend (Local Web Service)
 
 ## Requirements
 
