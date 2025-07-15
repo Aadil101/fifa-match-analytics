@@ -1,7 +1,9 @@
+import os
 import uvicorn
 import sentry_sdk
 from fastapi import FastAPI
 from fastapi.routing import APIRoute
+from fastapi.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
 
 from app.api.main import api_router
@@ -32,6 +34,11 @@ if settings.all_cors_origins:
     )
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
+
+# Serve UIs from backend
+current_dir = os.path.dirname(os.path.abspath(__file__))
+frontend_dist = os.path.join(current_dir, "..", "..", "frontend", "dist")
+app.mount("/", StaticFiles(directory=frontend_dist), name="ui")
 
 # This is strictly to allow for debugging the backend
 if __name__ == "__main__":

@@ -51,6 +51,8 @@ class Settings(BaseSettings):
 
     PROJECT_NAME: str
     SENTRY_DSN: HttpUrl | None = None
+    DB_TYPE: Literal["sqlite", "postgresql"] = "sqlite"
+    SQLITE_FILE_NAME: str = ""
     POSTGRES_SERVER: str
     POSTGRES_PORT: int = 5432
     POSTGRES_USER: str
@@ -59,15 +61,19 @@ class Settings(BaseSettings):
 
     @computed_field  # type: ignore[prop-decorator]
     @property
-    def SQLALCHEMY_DATABASE_URI(self) -> PostgresDsn:
-        return MultiHostUrl.build(
-            scheme="postgresql+psycopg",
-            username=self.POSTGRES_USER,
-            password=self.POSTGRES_PASSWORD,
-            host=self.POSTGRES_SERVER,
-            port=self.POSTGRES_PORT,
-            path=self.POSTGRES_DB,
-        )
+    def SQLALCHEMY_DATABASE_URI(self) -> str:
+        match self.DB_TYPE:
+            case "sqlite":
+                return f"sqlite:///{self.SQLITE_FILE_NAME}"
+            case "postgresql":
+                return str(MultiHostUrl.build(
+                    scheme="postgresql+psycopg",
+                    username=self.POSTGRES_USER,
+                    password=self.POSTGRES_PASSWORD,
+                    host=self.POSTGRES_SERVER,
+                    port=self.POSTGRES_PORT,
+                    path=self.POSTGRES_DB,
+                ))
 
     SMTP_TLS: bool = True
     SMTP_SSL: bool = False

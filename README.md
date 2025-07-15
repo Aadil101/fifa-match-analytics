@@ -13,7 +13,7 @@ Note: If EA ever decides to provide a proper analytics platform for FIFA/FC, I'l
 - Creates startup entry
 - System tray integration
 
-## 2. FIFA Match Analytics - Server (Local Web Service)
+## 2. FIFA Match Analytics - Backend (Local Web Service)
 
 - Separate executable that runs the REST API and web app
 - Handles OCR processing
