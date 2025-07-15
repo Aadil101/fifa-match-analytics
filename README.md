@@ -23,3 +23,7 @@ Note: If EA ever decides to provide a proper analytics platform for FIFA/FC, I'l
 ## Installation
 
 FIFA_Match_Analytics_Setup.msi
+
+## Credits
+
+This project is organized based on [fastapi/full-stack-fastapi-template](https://github.com/fastapi/full-stack-fastapi-template), which is licensed under the MIT License.
