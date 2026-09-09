@@ -13,8 +13,10 @@ Background service that captures FIFA match statistics automatically through hot
 
 1. Play a FIFA match
 2. When the match ends, press `Win + O` on the statistics screen
-3. The agent will capture and process the statistics automatically
-4. View your match history at `http://localhost:8000`
+3. The agent will capture the statistics and hand them to the backend for OCR
+
+Note: results are not persisted yet, so there is no match history to view. See
+the root `README.md` for what is and isn't built.
 
 ## Prerequisites
 
